@@ -1,0 +1,17 @@
+{
+  "name": "remotecontrol",
+  "version": "0.0.1-1",
+  "description": "Remote Control Web interface",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jannick Garthen",
+  "license": "BSD",
+  "dependencies": {
+    "express": "~3.3.4",
+    "consolidate": "~0.9.1",
+    "swig": "~0.14.0",
+    "socket.io": "~0.9.16"
+  }
+}

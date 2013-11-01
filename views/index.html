@@ -1,0 +1,43 @@
+{% spaceless %}
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<title>Remote Control</title>
+		<meta name="description" content="">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+		<link href="http://fonts.googleapis.com/css?family=Roboto:400,900,700,500,300,100" rel="stylesheet" type="text/css">
+		<link href="/style.css" rel="stylesheet">
+	</head>
+	<body>
+		<div class="col">
+			<h1>Fernseher</h1>
+			<button name="state" value="1" data-device="0">An</button>
+			<button name="state" value="0" data-device="0">Aus</button>
+			<h1>Fernseher Rücklicht</h1>
+			<button name="state" value="1" data-device="1">An</button>
+			<button name="state" value="0" data-device="1">Aus</button>
+			<h1>Licht Bett</h1>
+			<button name="state" value="1" data-device="2">An</button>
+			<button name="state" value="0" data-device="2">Aus</button>
+		</div>
+		<div class="col">
+			<h1>Licht Sofa</h1>
+			<button name="state" value="1" data-device="3">An</button>
+			<button name="state" value="0" data-device="3">Aus</button>
+			<h1>Ladestation</h1>
+			<button name="state" value="1" data-device="4">An</button>
+			<button name="state" value="0" data-device="4">Aus</button>
+			<h1>Alle</h1>
+			<button name="state" value="1" data-device="[0,1,2,3,4]">An</button>
+			<button name="state" value="0" data-device="[0,1,2,3,4]">Aus</button>
+		</div>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="script.js"></script>
+	</body>
+</html>
+{% endspaceless %}
