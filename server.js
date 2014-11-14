@@ -7,9 +7,9 @@ var exec    = require('child_process').exec;
 var app     = express();
 var server  = http.createServer(app);
 var io      = require('socket.io').listen(server);
-var elro_wiringpi = function(options) {
+var elro_wiringpi = function(options, cb) {
 	console.log(__dirname + '/elro_wiringpi.py');
-	exec('sudo ' + __dirname + '/elro_wiringpi.py ' + options.join(' '));
+	exec('sudo ' + __dirname + '/elro_wiringpi.py ' + options.join(' '), cb);
 };
 
 // configure template engine
@@ -49,18 +49,20 @@ app.get('/', function(req, res) {
 
 });
 
+var _state = {};
+var _toString = Object.prototype.toString;
 io.sockets.on('connection', function(socket) {
+	socket.emit('update', _state);
 	socket.on('toggleState', function _toggleState(data) {
 
-		console.log(data.unitCode, Object.prototype.toString.call(data.unitCode))
-
-		if(Object.prototype.toString.call(data.unitCode) === '[object Array]') {
+		if(_toString.call(data.unitCode) === '[object Array]') {
 			var timeout = 0;
-			data.unitCode.forEach(function(unitCode) {
+			var stateIsArray = _toString.call(data.state) === '[object Array]';
+			data.unitCode.forEach(function(unitCode, key) {
 
 				setTimeout(_toggleState, timeout, {
 					unitCode: unitCode,
-					state: data.state
+					state: stateIsArray ? data.state[key] : data.state
 				});
 				timeout += 500;
 
@@ -72,7 +74,10 @@ io.sockets.on('connection', function(socket) {
 			var unitCode = Math.pow(2, data.unitCode);
 			var state    = parseInt(data.state, 10);
 
-			elro_wiringpi([unitCode, state]);
+			elro_wiringpi([unitCode, state], function() {
+				_state[data.unitCode] = data.state;
+				io.sockets.emit('update', _state);
+			});
 
 		}
 

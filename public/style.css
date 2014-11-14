@@ -1,51 +1,67 @@
 * {
-	margin: 0;
 	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
 }
+
 html {
-	font-family: 'Roboto', sans-serif;
-	background: #f9f9f9;
-	-webkit-tap-highlight-color: rgba(0,0,0,0);
-	height: 100%;
-}
-
-body {
-	height: 100%;
-	padding: 0 2em;
-}
-.col {
-	overflow: hidden;
-}
-.col:last-of-type {
-	padding: 0 0 2em;
-}
-
-h1 {
-	font-size: 1.4em;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: normal;
+  background: #fdfdfd;
+  color: #333;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  max-height: 100%;
 	text-align: center;
-	padding: 0.5em 0 0.25em;
-	margin-bottom: 0.5em;
-	border-bottom: 1px solid #000;
-	clear: both;
-	font-weight: 300;
-}
-button {
-	width: 45%;
-	margin: 0 2.5%;
-	display: inline-block;
-	padding: 1em 0;
-	background: #d1d1d1;
-	border: none;
-}
-.touch-active:active {
-	background: #00a2ff;
 }
 
-@media all and (min-width: 600px) {
-	.col {
-		float: left;
-		width: 45%;
-		margin: 0 2.5%;
-		padding: 0 0 2em;
-	}
+button {
+	background: transparent;
+	border: none;
+	font: inherit;
+	cursor: pointer;
+	outline: none;
+}
+
+.btn {
+	background: #fff;
+	color: #333;
+	padding: 25px 15px;
+	border-radius: 0.16667rem;
+	box-shadow: 0.05556rem 0.05556rem 0.44444rem rgba(0, 0, 0, 0.25);
+	font-weight: 600;
+	margin: 2.5%;
+	transition: background 0.3s;
+	width: 45%;
+	display: inline-block;
+}
+
+.btn-full {
+	width: 95%;
+}
+
+.btn-simple {
+	width: 28.333%;
+}
+
+.btn.is-active {
+	background: #009FE3;
+	color: #fdfdfd;
+}
+
+.btn.btn-on {
+	background: #1BD032;
+	color: #fdfdfd;
+}
+
+.btn.btn-off {
+	background: #A6250F;
+	color: #fdfdfd;
+}
+
+.btn.is-touched {
+	box-shadow: inset 0.05556rem 0.05556rem 0.44444rem rgba(0, 0, 0, 0.25);
+}
+
+.btn-group {
+	margin-bottom: 25px;
 }

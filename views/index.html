@@ -12,32 +12,25 @@
 		<link rel="shortcut icon" sizes="256x256" href="icon.png">
 		<link rel="apple-touch-icon" sizes="256x256" href="icon.png">
 
-		<link href="http://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet" type="text/css">
+		<link href="http://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900|Josefin+Sans:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
 		<link href="/style.css" rel="stylesheet">
 	</head>
 	<body>
-		<div class="col">
-			<h1>Fernseher</h1>
-			<button name="state" value="1" data-device="0">An</button>
-			<button name="state" value="0" data-device="0">Aus</button>
-			<h1>Fernseher Rücklicht</h1>
-			<button name="state" value="1" data-device="1">An</button>
-			<button name="state" value="0" data-device="1">Aus</button>
-			<h1>Licht Bett</h1>
-			<button name="state" value="1" data-device="2">An</button>
-			<button name="state" value="0" data-device="2">Aus</button>
+
+		<div class="btn-group">
+			<button class="btn btn-on" value="1" data-device="[0,1,2,3,4]">Turn on</button>
+			<button class="btn btn-off" value="0" data-device="[0,1,2,3,4]">Shut off</button>
+
+			<button class="btn btn-simple" value="1" data-device="[1,2,3]">Let there be light</button>
+			<button class="btn btn-simple" value="1" data-device="[0,1]">Watch TV</button>
+			<button class="btn btn-simple" value="[0,0,0,0,1]" data-device="[0,1,2,3,4]">Go to bed</button>
 		</div>
-		<div class="col">
-			<h1>Licht Sofa</h1>
-			<button name="state" value="1" data-device="3">An</button>
-			<button name="state" value="0" data-device="3">Aus</button>
-			<h1>Ladestation</h1>
-			<button name="state" value="1" data-device="4">An</button>
-			<button name="state" value="0" data-device="4">Aus</button>
-			<h1>Alle</h1>
-			<button name="state" value="1" data-device="[0,1,2,3,4]">An</button>
-			<button name="state" value="0" data-device="[0,1,2,3,4]">Aus</button>
-		</div>
+		<button class="btn" value="0" data-device="0" data-device-toggle>TV</button>
+		<button class="btn" value="0" data-device="1" data-device-toggle>Light TV</button>
+		<button class="btn" value="0" data-device="2" data-device-toggle>Light Bed</button>
+		<button class="btn" value="0" data-device="3" data-device-toggle>Light Couch</button>
+		<button class="btn" value="0" data-device="4" data-device-toggle>Current</button>
+
 		<script src="/socket.io/socket.io.js"></script>
 		<script src="script.js"></script>
 	</body>
