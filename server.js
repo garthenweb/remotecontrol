@@ -1,33 +1,26 @@
 var express = require('express');
 var http    = require('http');
-var engines = require('consolidate');
 var swig    = require('swig');
 var exec    = require('child_process').exec;
 
 var app     = express();
-var server  = http.createServer(app);
-var io      = require('socket.io').listen(server);
+var server  = require('http').Server(app);
+var io      = require('socket.io')(server);
 var elro_wiringpi = function(options, cb) {
 	console.log(__dirname + '/elro_wiringpi.py');
 	exec('sudo ' + __dirname + '/elro_wiringpi.py ' + options.join(' '), cb);
 };
 
-// configure template engine
-swig.init({
-	root: __dirname + '/views',
-	cache: false
-});
-
-app.engine('html', engines.swig);
+app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
 
-app.set('views', __dirname + '/views');
-app.set('view engine', 'html');
-app.use(express.static(__dirname + '/public'));
+var isProd = app.get('env') === 'production';
 
-app.configure('production', function() {
+app.set('view cache', isProd);
+swig.setDefaults({ cache: isProd });
 
+if(isProd) {
 	io.enable('browser client minification');
 	io.enable('browser client etag');
 	io.enable('browser client gzip');
@@ -39,14 +32,13 @@ app.configure('production', function() {
 		'xhr-polling',
 		'jsonp-polling'
 	]);
+}
 
-});
-// io.set('transports', ['websocket']);
-
+app.use(express.static(__dirname + '/public'));
 app.get('/', function(req, res) {
-
-	res.render('index');
-
+	res.render('index', {
+		isProd: app.get('env') === 'production'
+	});
 });
 
 var _state = {};
@@ -84,5 +76,6 @@ io.sockets.on('connection', function(socket) {
 	});
 });
 
-server.listen(process.env.PORT || 3001);
-console.log("Express server listening on port %d in %s mode", server.address().port, app.get('env'));
+var port = process.env.PORT || 3001;
+server.listen(port);
+console.log('Express server listening on port %d in %s mode', port, app.get('env'));
