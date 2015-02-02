@@ -7,7 +7,6 @@ var app     = express();
 var server  = require('http').Server(app);
 var io      = require('socket.io')(server);
 var elro_wiringpi = function(options, cb) {
-	console.log(__dirname + '/elro_wiringpi.py');
 	exec('sudo ' + __dirname + '/elro_wiringpi.py ' + options.join(' '), cb);
 };
 

@@ -118,6 +118,17 @@
 			connect: function() {
 				var socketUrl = location.origin;
 				socket = io.connect(socketUrl);
+
+				// catch errors
+				socket.on('error', function() {
+					alert(JSON.stringify(arguments[0]));
+				});
+
+				return this;
+			},
+
+			isConnected: function() {
+				return socket.connected;
 			}
 
 		};
@@ -125,8 +136,14 @@
 	})();
 
 	api.connect();
+	document.addEventListener('visibilitychange', function _handleVisibilityChange() {
+		if(document.hidden || api.isConnected()) {
+			return;
+		}
+		api.connect();
+	});
+
 	api.on('update', function(state) {
-		console.log(state);
 		var keys = Object.keys(state);
 		keys.forEach(function(key) {
 			var el = document.querySelector('[data-device="' + key + '"]');
@@ -152,6 +169,6 @@
 
 	});
 
-
+	window.api = api;
 
 })();

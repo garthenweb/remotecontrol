@@ -17,7 +17,7 @@ html {
 
 body {
   background: #fdfdfd;
-	animation: fade-in 1.5s both;
+	animation: fade-in 1.5s .5s both;
 }
 
 button {
