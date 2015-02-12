@@ -118,6 +118,8 @@
 			connect: function() {
 				var socketUrl = location.origin;
 				socket = io.connect(socketUrl, {
+			    'reconnection delay': 100,
+			    'reconnection limit': 100,
 					'max reconnection attempts': Infinity
 				});
 
