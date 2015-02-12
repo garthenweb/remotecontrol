@@ -117,11 +117,18 @@
 
 			connect: function() {
 				var socketUrl = location.origin;
-				socket = io.connect(socketUrl);
+				socket = io.connect(socketUrl, {
+					'max reconnection attempts': Infinity
+				});
 
 				// catch errors
 				socket.on('error', function() {
-					alert(JSON.stringify(arguments[0]));
+					alert('error' + JSON.stringify(arguments[0]));
+				});
+
+				// catch errors
+				socket.on('reconnect_failed', function() {
+					alert('reconnect_failed' + JSON.stringify(arguments[0]));
 				});
 
 				return this;
