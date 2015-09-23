@@ -173,7 +173,9 @@
 			return;
 		}
 
-		window.navigator.vibrate(25);
+		if(typeof window.navigator.vibrate === 'function') {
+			window.navigator.vibrate(25);
+		}
 		api.send(el.getAttribute('data-device'), el.value);
 
 	});
