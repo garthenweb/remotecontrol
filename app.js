@@ -1,4 +1,2 @@
-require('babel-polyfill');
-require('babel-register');
-
-const { on, off } = require('./lib/sender');
+import { on, off } from './lib/sender';
+on(2);
