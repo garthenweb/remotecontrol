@@ -9,9 +9,11 @@
   "author": "Jannick Garthen",
   "license": "MIT",
   "dependencies": {
+    "babel-polyfill": "^6.7.2",
+    "babel-register": "^6.7.2",
+    "express": "^4.13.4",
     "johnny-five": "^0.9.30",
     "raspi-io": "^5.4.1",
-    "express": "^4.13.4",
     "socket.io": "^1.4.4",
     "swig": "^1.4.2"
   },
