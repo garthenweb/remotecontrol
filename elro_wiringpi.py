@@ -35,10 +35,12 @@ Version 1.0
 
 import time
 import wiringpi
+import time
 
 class RemoteSwitch(object):
    repeat = 10 # Number of transmissions
    pulselength = 300 # microseconds
+   counter = 0
    
    def __init__(self, unit_code, system_code=[1,1,1,1,1], pin=17):
       ''' 
@@ -81,13 +83,21 @@ class RemoteSwitch(object):
             x = x>>1
             
       wiringpi.wiringPiSetupSys()
+      print "pin %s" % (self.pin)
+      print "system code %s" % (self.system_code)
+      print "mode %s" % (wiringpi.OUTPUT)
+      print "write first %s" % (wiringpi.LOW)
       wiringpi.pinMode(self.pin,wiringpi.OUTPUT)
       wiringpi.digitalWrite(self.pin,wiringpi.LOW)
+      
+      startTime = time.time()
       for z in range(self.repeat):
          for b in bangs:
             wiringpi.digitalWrite(self.pin, b)
+            # self.counter = self.counter + 1
+            # print "write %s" % (self.counter)
             time.sleep(self.pulselength/1000000.)
-      
+      print (time.time() - startTime) * 1000
       
 if __name__ == '__main__':
    import sys
