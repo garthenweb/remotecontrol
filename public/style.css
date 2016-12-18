@@ -7,8 +7,7 @@
 html {
   font-family: 'Josefin Sans', sans-serif;
   font-weight: normal;
-  color: #333;
-  /*background: #009FE3;*/
+  background: #333;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   max-height: 100%;
 	text-align: center;
@@ -16,7 +15,6 @@ html {
 
 
 body {
-  background: #fdfdfd;
 	animation: fade-in 1.5s .5s both;
   font-size: 0;
 }
@@ -34,13 +32,13 @@ button {
 	color: #333;
 	padding: 25px 15px;
 	border-radius: 0.16667rem;
-	box-shadow: 0.05556rem 0.05556rem 0.44444rem rgba(0, 0, 0, 0.25);
 	font-weight: 600;
   font-size: 16px;
 	margin: 2.5%;
 	transition: background 0.3s;
 	width: 45%;
 	display: inline-block;
+  transition: transform 50ms;
 }
 
 .btn-full {
@@ -52,8 +50,8 @@ button {
 }
 
 .btn.is-active {
-	background: #009FE3;
-	color: #fdfdfd;
+	background: #ffe86f;
+	/*color: #fdfdfd;*/
 }
 
 .btn.btn-on {
@@ -66,8 +64,8 @@ button {
 	color: #fdfdfd;
 }
 
-.btn.is-touched {
-	box-shadow: inset 0.05556rem 0.05556rem 0.44444rem rgba(0, 0, 0, 0.25);
+.btn.is-touch-active {
+  transform: scale(0.95);
 }
 
 .btn-group {

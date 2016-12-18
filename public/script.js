@@ -74,4 +74,16 @@
 		}
 		api.send(el.getAttribute('data-device'), el.value);
 	});
+
+  [...document.querySelectorAll('button')].forEach((el) => {
+    el.addEventListener('touchstart', (ev) => {
+      ev.target.classList.add('is-touch-active');
+    });
+  });
+
+  document.addEventListener('touchend', () => {
+    [...document.querySelectorAll('button')].forEach(el => {
+      el.classList.remove('is-touch-active')
+    });
+  });
 })();

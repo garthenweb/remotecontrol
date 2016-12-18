@@ -40,7 +40,7 @@ io.sockets.on('connection', (socket) => {
       data.unitCode.forEach((unitCode, key) => {
         setTimeout(_toggleState, timeout, {
           unitCode,
-          state: stateIsArray ? data.state[key] : data.state,
+          state: stateIsArray ? data.state[key] : data.state
         });
         timeout += 500;
       });
