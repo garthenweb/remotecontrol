@@ -7,12 +7,13 @@
 html {
   font-family: 'Josefin Sans', sans-serif;
   font-weight: normal;
-  background: #333;
+  /*background: #33304c;*/
+  background: radial-gradient(circle farthest-corner at 0 0, #66628c, #33304c);
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   max-height: 100%;
 	text-align: center;
+  min-height: 100%;
 }
-
 
 body {
 	animation: fade-in 1.5s .5s both;
