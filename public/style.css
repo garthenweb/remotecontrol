@@ -18,6 +18,7 @@ html {
 body {
   background: #fdfdfd;
 	animation: fade-in 1.5s .5s both;
+  font-size: 0;
 }
 
 button {
@@ -35,6 +36,7 @@ button {
 	border-radius: 0.16667rem;
 	box-shadow: 0.05556rem 0.05556rem 0.44444rem rgba(0, 0, 0, 0.25);
 	font-weight: 600;
+  font-size: 16px;
 	margin: 2.5%;
 	transition: background 0.3s;
 	width: 45%;

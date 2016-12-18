@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Remote Control</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+
+    <link href="http://fonts.googleapis.com/css?family=Josefin+Sans:600" rel="stylesheet" type="text/css">
+    <link href="/style.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="btn-group">
+      <button class="btn btn-on" value="1" data-device="[0,1,2,3,4]">Turn on</button>
+      <button class="btn btn-off" value="0" data-device="[0,1,2,3,4]">Shut off</button>
+
+      <button class="btn btn-simple" value="1" data-device="[1,2,3]">Let there be light</button>
+      <button class="btn btn-simple" value="1" data-device="[0,1]">Watch TV</button>
+      <button class="btn btn-simple" value="[0,0,0,0,1]" data-device="[0,1,2,3,4]">Go to bed</button>
+    </div>
+    <button class="btn" value="0" data-device="0" data-device-toggle>TV</button>
+    <button class="btn" value="0" data-device="1" data-device-toggle>Light TV</button>
+    <button class="btn" value="0" data-device="2" data-device-toggle>Light Bed</button>
+    <button class="btn" value="0" data-device="3" data-device-toggle>Light Couch</button>
+    <button class="btn" value="0" data-device="4" data-device-toggle>Current</button>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
