@@ -1,47 +1,47 @@
-import { setupBits, toBangs } from '../lib/helper';
+import { setupBitsByCodes, bitsToBangs, getBangsByCodes } from '../lib/helper';
 
-describe('setupBits', () => {
+describe('setupBitsByCodes', () => {
   it('for unit 1 for system (1, 1, 1, 1, 1)', () => {
-    expect(setupBits(1, [1, 1, 1, 1, 1])).toEqual(
+    expect(setupBitsByCodes(1, [1, 1, 1, 1, 1])).toEqual(
       [136, 136, 136, 136, 136, 136, 142, 142, 142, 142, null, null, 128, 0, 0, 0]
     );
   });
 
   it('for unit 2 for system (1, 1, 1, 1, 1)', () => {
-    expect(setupBits(2, [1, 1, 1, 1, 1])).toEqual(
+    expect(setupBitsByCodes(2, [1, 1, 1, 1, 1])).toEqual(
       [136, 136, 136, 136, 136, 142, 136, 142, 142, 142, null, null, 128, 0, 0, 0]
     );
   });
 
   it('for unit 4 for system (1, 1, 1, 1, 1)', () => {
-    expect(setupBits(4, [1, 1, 1, 1, 1])).toEqual(
+    expect(setupBitsByCodes(4, [1, 1, 1, 1, 1])).toEqual(
       [136, 136, 136, 136, 136, 142, 142, 136, 142, 142, null, null, 128, 0, 0, 0]
     );
   });
 
   it('for unit 1 for system (0, 0, 0, 0, 0)', () => {
-    expect(setupBits(1, [0, 0, 0, 0, 0])).toEqual(
+    expect(setupBitsByCodes(1, [0, 0, 0, 0, 0])).toEqual(
       [142, 142, 142, 142, 142, 136, 142, 142, 142, 142, null, null, 128, 0, 0, 0]
     );
   });
 
   it('for unit 2 for system (0, 0, 0, 0, 0)', () => {
-    expect(setupBits(2, [0, 0, 0, 0, 0])).toEqual(
+    expect(setupBitsByCodes(2, [0, 0, 0, 0, 0])).toEqual(
       [142, 142, 142, 142, 142, 142, 136, 142, 142, 142, null, null, 128, 0, 0, 0]
     );
   });
 
   it('for unit 4 for system (0, 0, 0, 0, 0)', () => {
-    expect(setupBits(4, [0, 0, 0, 0, 0])).toEqual(
+    expect(setupBitsByCodes(4, [0, 0, 0, 0, 0])).toEqual(
       [142, 142, 142, 142, 142, 142, 142, 136, 142, 142, null, null, 128, 0, 0, 0]
     );
   });
 });
 
-describe('toBangs', () => {
+describe('bitsToBangs', () => {
   it('for unit 1 for system (0, 0, 0, 0, 0)', () => {
     expect(
-      toBangs(
+      bitsToBangs(
         [142, 142, 142, 142, 142, 136, 142, 142, 142, 142, 136, 142, 128, 0, 0, 0]
       )
     ).toEqual(
@@ -60,7 +60,7 @@ describe('toBangs', () => {
 
   it('for unit 4 for system (0, 0, 0, 0, 0)', () => {
     expect(
-      toBangs(
+      bitsToBangs(
         [142, 142, 142, 142, 142, 142, 142, 136, 142, 142, 136, 142, 128, 0, 0, 0]
       )
     ).toEqual(
@@ -79,7 +79,7 @@ describe('toBangs', () => {
 
   it('for unit 1 for system (1, 1, 1, 1, 1)', () => {
     expect(
-      toBangs(
+      bitsToBangs(
         [136, 136, 136, 136, 136, 136, 142, 142, 142, 142, 136, 142, 128, 0, 0, 0]
       )
     ).toEqual(
@@ -98,7 +98,7 @@ describe('toBangs', () => {
 
   it('for unit 4 for system (1, 1, 1, 1, 1)', () => {
     expect(
-      toBangs(
+      bitsToBangs(
         [136, 136, 136, 136, 136, 142, 142, 136, 142, 142, 136, 142, 128, 0, 0, 0]
       )
     ).toEqual(
@@ -107,6 +107,26 @@ describe('toBangs', () => {
         1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0,
         1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0,
         1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0,
+        1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0,
+        1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0,
+        1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      ]
+    );
+  });
+});
+
+describe('getBangsByCodes', () => {
+  it('for unit 1 for system (1, 1, 1, 1, 1) turn on', () => {
+    expect(getBangsByCodes(true, {
+      unitCode: 1,
+      systemCode: [1, 1, 1, 1, 1],
+    })).toEqual(
+      [
+        1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0,
+        1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0,
+        1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0,
+        1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0,
         1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0,
         1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0,
         1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
