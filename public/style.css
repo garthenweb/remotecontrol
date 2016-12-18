@@ -35,10 +35,9 @@ button {
 	font-weight: 600;
   font-size: 16px;
 	margin: 2.5%;
-	transition: background 0.3s;
+	transition: background 0.3s, transform 50ms;
 	width: 45%;
 	display: inline-block;
-  transition: transform 50ms;
 }
 
 .btn-full {
