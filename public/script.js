@@ -4,9 +4,9 @@
 		var socket;
 		return {
 			send: function (device, state) {
-				socket.emit('toggleState', {
+				socket.emit('device:mutate', {
 					unitCode: JSON.parse(device),
-					state: JSON.parse(state)
+					state: Boolean(JSON.parse(state))
 				});
 			},
 
@@ -49,11 +49,11 @@
 		api.connect();
 	});
 
-	api.on('update', function(state) {
+	api.on('device:sync', function(state) {
 		var keys = Object.keys(state);
 		keys.forEach(function(key) {
 			var el = document.querySelector('[data-device="' + key + '"]');
-			if(parseInt(state[key], 10) === 0) {
+			if(!state[key]) {
 				el.value = 1;
 				el.classList.remove('is-active');
 			} else {

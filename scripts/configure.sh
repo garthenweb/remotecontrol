@@ -1,0 +1,1 @@
+chmod +x ../bin/elro_wiringpi.py
