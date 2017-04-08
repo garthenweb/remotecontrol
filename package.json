@@ -7,6 +7,8 @@
     "test": "babel-node spec/run.js",
     "test:watch": "watch \"npm test\" lib/ spec/",
     "lint": "eslint lib/**/*.js spec/**/*.js",
+    "babel": "babel public/script.js --out-file public/script.compat.js",
+    "prestart": "npm run babel",
     "start": "babel-node index"
   },
   "author": "Jannick Garthen",
