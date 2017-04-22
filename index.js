@@ -1,4 +1,6 @@
 import 'babel-polyfill';
+// import fetch from 'node-fetch';
+
 import startServer, { sockets } from './lib/server';
 import createStore from './lib/server/store';
 import { activate, deactivate } from './lib/server/actions/devicePowerPoint';
@@ -24,11 +26,22 @@ sockets.on('connection', (socket) => {
   });
 });
 
-locals.bdaddrs.forEach((addr) => {
-  setInterval(async () => {
+(async function locationState() {
+  const lookUps = locals.bdaddrs.map(async (addr) => {
     const inRange = Boolean(await lookup(addr));
     store.dispatch(setLocation(inRange ? 'in_range' : null));
-  }, 30000);
-});
+  });
+  await Promise.all(lookUps);
+  setTimeout(locationState, 30000);
+}());
+
+// (async function sunState() {
+//   const req = await fetch(`https://api.sunrise-sunset.org/json?lat=${locals.lat}&lng=${locals.lng}&date=today&formatted=0`);
+//   const { results, status } = await req.json();
+//   if (status === 'OK') {
+//     console.log(results.sunrise, results.sunset);
+//   }
+//   setTimeout(sunState, 12 * 60 * 60 * 1000);
+// }());
 
 startServer();
