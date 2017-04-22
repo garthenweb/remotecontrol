@@ -4,6 +4,7 @@ import 'babel-polyfill';
 import startServer, { sockets } from './lib/server';
 import createStore from './lib/server/store';
 import { activate, deactivate } from './lib/server/actions/devicePowerPoint';
+import { setDateTime } from './lib/server/actions/date';
 import { add as addSocket, remove as removeSocket } from './lib/server/actions/socket';
 import { setLocation } from './lib/server/actions/user';
 import { lookup } from './lib/service/bluethooth';
@@ -25,6 +26,11 @@ sockets.on('connection', (socket) => {
     store.dispatch(removeSocket(socket));
   });
 });
+
+(function tick() {
+  store.dispatch(setDateTime(Date.now()));
+  setTimeout(tick, 1000);
+}());
 
 (async function locationState() {
   const lookUps = locals.bdaddrs.map(async (addr) => {
