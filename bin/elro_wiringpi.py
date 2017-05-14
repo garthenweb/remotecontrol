@@ -35,6 +35,7 @@ Version 1.0
 
 import time
 import wiringpi
+import json
 
 class RemoteSwitch(object):
    repeat = 10 # Number of transmissions
@@ -101,22 +102,21 @@ class RemoteSwitch(object):
 if __name__ == '__main__':
    import sys
 
-   # Change the system_code[] variable below according to the dipswitches on your Elro receivers.
-   default_system_code = [1,1,1,1,1]
-
    # change the pin accpording to your wiring
-   default_pin =17
+   default_pin = 17
 
    if len(sys.argv) < 3:
       print "usage: python %s int_unit_code int_state (e.g. '%s 2 1' switches unit 2 on)" % \
          (sys.argv[0], sys.argv[0])
       sys.exit(1)
 
-   device = RemoteSwitch(  unit_code= int(sys.argv[1]),
-                     system_code=default_system_code,
-                     pin=default_pin)
+   device = RemoteSwitch(
+     unit_code = int(sys.argv[1]),
+     system_code = json.loads(sys.argv[2]),
+     pin = default_pin
+   )
 
-   if int(sys.argv[2]):
+   if int(sys.argv[3]):
       device.switchOn()
    else:
       device.switchOff()

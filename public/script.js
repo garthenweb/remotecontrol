@@ -3,10 +3,10 @@
 	var api = (function() {
 		var socket;
 		return {
-			send: function (device, state) {
+			send: function (unit, state) {
 				socket.emit('device:mutate', {
-					unitCode: JSON.parse(device),
-					state: Boolean(JSON.parse(state))
+					unit,
+					state: Boolean(state),
 				});
 			},
 
@@ -49,11 +49,24 @@
 		api.connect();
 	});
 
+  const DEFAULT_CHANNEL = [1, 1, 1, 1, 1];
 	api.on('device:sync', function(state) {
-		var keys = Object.keys(state);
-		keys.forEach(function(key) {
-			var el = document.querySelector('[data-device="' + key + '"]');
-			if(!state[key]) {
+		var deviceIds = Object.keys(state).map(unit => JSON.parse(unit));
+		deviceIds.forEach(function(unit) {
+      const el = [
+        ...document.querySelectorAll('[data-device="' + unit.code + '"]'),
+      ].find(e => (
+        JSON.stringify(unit.channel) === (
+          e.dataset.channel ||
+          JSON.stringify(DEFAULT_CHANNEL)
+        )
+      ));
+
+      if (!el) {
+        return;
+      }
+
+			if(!state[JSON.stringify(unit)]) {
 				el.value = 1;
 				el.classList.remove('is-active');
 			} else {
@@ -72,7 +85,13 @@
 		if(typeof window.navigator.vibrate === 'function') {
 			window.navigator.vibrate(25);
 		}
-		api.send(el.getAttribute('data-device'), el.value);
+    const device = JSON.parse(el.getAttribute('data-device'));
+    const devices = Array.isArray(device) ? device : [device];
+    const channel = JSON.parse(el.getAttribute('data-channel')) || DEFAULT_CHANNEL;
+
+    const unit = devices.map(code => ({ code, channel }));
+
+		api.send(unit, JSON.parse(el.value));
 	});
 
   [...document.querySelectorAll('button')].forEach((el) => {
