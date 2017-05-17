@@ -4,8 +4,8 @@
   "description": "Remote Control Web interface",
   "main": "server.js",
   "scripts": {
-    "test": "babel-node spec/run.js",
-    "test:watch": "watch \"npm test\" lib/ spec/",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "lint": "eslint lib/**/*.js spec/**/*.js",
     "babel": "babel public/script.js --out-file public/script.compat.js",
     "prestart": "npm run babel",
@@ -28,7 +28,6 @@
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.1.2",
     "eslint-plugin-import": "^2.2.0",
-    "jasmine": "^2.5.3",
-    "watch": "^1.0.2"
+    "jest": "^20.0.3"
   }
 }
