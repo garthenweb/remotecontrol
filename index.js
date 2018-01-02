@@ -21,4 +21,4 @@ const store = createStore();
   setTimeout(tick, locals.tickInterval);
 }());
 
-startServer();
+startServer(process.env.PORT || 3001);
