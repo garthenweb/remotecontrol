@@ -1,0 +1,81 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+html {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: normal;
+  background: radial-gradient(circle farthest-corner at 0 0, #66628c, #33304c);
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  max-height: 100%;
+	text-align: center;
+  min-height: 100%;
+}
+
+body {
+	animation: fade-in 1.5s .5s both;
+  font-size: 0;
+}
+
+button {
+	background: transparent;
+	border: none;
+	font: inherit;
+	cursor: pointer;
+	outline: none;
+}
+
+.btn {
+	background: #fff;
+	color: #333;
+	padding: 25px 15px;
+	border-radius: 0.16667rem;
+	font-weight: 600;
+  font-size: 16px;
+	margin: 2.5%;
+	transition: background 0.3s, transform 50ms;
+	width: 45%;
+	display: inline-block;
+}
+
+.btn-full {
+	width: 95%;
+}
+
+.btn-simple {
+	width: 28.333%;
+}
+
+.btn.is-active {
+	background: #ffe86f;
+	/*color: #fdfdfd;*/
+}
+
+.btn.btn-on {
+	background: #1BD032;
+	color: #fdfdfd;
+}
+
+.btn.btn-off {
+	background: #A6250F;
+	color: #fdfdfd;
+}
+
+.btn.is-touch-active {
+  transform: scale(0.95);
+}
+
+.btn-group {
+	margin-bottom: 25px;
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}

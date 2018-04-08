@@ -1,7 +1,19 @@
 {
-  "extends": "airbnb-base",
+  "extends": "airbnb",
   "env": {
     "jasmine": true,
     "node": true
+  },
+  "rules": {
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ],
+    "react/prop-types": 0
   }
 }

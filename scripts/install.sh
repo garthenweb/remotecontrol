@@ -17,7 +17,7 @@ sudo python setup.py install
 popd
 
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
-command -v nvm
+source ~/.bashrc
 nvm install 8
 
 popd
