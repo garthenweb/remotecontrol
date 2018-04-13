@@ -9,18 +9,12 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-const store = createStore(
-  rootReducer,
-  applyMiddleware(thunk),
-);
-
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
-  (
-    <Provider store={store}>
-      <App />
-    </Provider>
-  ),
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root'),
 );
 registerServiceWorker();

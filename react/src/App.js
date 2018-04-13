@@ -4,12 +4,7 @@ import Button from './components/Button';
 import deviceActions from './actions/device';
 import './App.css';
 
-function App({
-  devices,
-  powerOn,
-  powerOff,
-  powerToggle,
-}) {
+function App({ devices, powerOn, powerOff, powerToggle }) {
   const deviceIds = devices.map(({ id }) => id);
   return [
     <div key="group1" className="btn-group">
@@ -17,7 +12,12 @@ function App({
       <Button onClick={() => powerOff(deviceIds)} content="Shut off" />
     </div>,
     ...devices.map(device => (
-      <Button key={device.id} onClick={() => powerToggle(device.id)} content={device.name} isActive={!!device.powerState} />
+      <Button
+        key={device.id}
+        onClick={() => powerToggle(device.id)}
+        content={device.name}
+        isActive={!!device.powerState}
+      />
     )),
   ];
 }
