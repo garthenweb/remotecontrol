@@ -1,35 +1,45 @@
 import { POWER_STATE_CHANGE } from '../actions/device';
-
-const POWER_OFF = 0;
-const POWER_ON = 1;
+import createDevice, { POWER_OFF } from '../domain/Device';
 
 const initialState = [
-  {
-    type: 'power',
+  createDevice({
     id: '1',
     name: 'TV',
-    powerState: POWER_OFF,
-  },
-  {
-    type: 'power',
+    state: {
+      power: POWER_OFF,
+    },
+    props: {
+      powerToggle: true,
+    },
+  }),
+  createDevice({
     id: '2',
     name: 'Background Light',
-    powerState: POWER_OFF,
-  },
-  {
-    type: 'power',
+    state: {
+      power: POWER_OFF,
+    },
+    props: {
+      powerToggle: true,
+    },
+  }),
+  createDevice({
     id: '3',
     name: 'Window Light',
-    powerState: POWER_ON,
-  },
+    state: {
+      power: POWER_OFF,
+    },
+    props: {
+      powerToggle: true,
+    },
+  }),
 ];
 
-const reduceDevice = (state, action) => {
+const reduceDevice = (device, action) => {
   const ids = [].concat(action.meta.id);
-  if (ids.includes(state.id)) {
-    return { ...state, ...action.payload };
+  if (ids.includes(device.id)) {
+    return device.copy(action.payload);
   }
-  return state;
+  return device;
 };
 
 export default (state = initialState, action) => {

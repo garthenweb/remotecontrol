@@ -16,7 +16,7 @@ function App({ devices, powerOn, powerOff, powerToggle }) {
         key={device.id}
         onClick={() => powerToggle(device.id)}
         content={device.name}
-        isActive={!!device.powerState}
+        isActive={device.getSerializedStateOf('power', Boolean)}
       />
     )),
   ];
