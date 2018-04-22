@@ -8,7 +8,8 @@
     "test:watch": "jest --watch",
     "lint": "eslint lib/**/*.js spec/**/*.js",
     "prestart": "cd ./react && yarn && npm run build && rm -rf ../public && mv ./build ../public && cd ..",
-    "start": "babel-node index"
+    "start": "babel-node index",
+    "start:server": "babel-node index"
   },
   "author": "Jannick Garthen",
   "license": "MIT",
@@ -21,7 +22,8 @@
     "node-fetch": "^1.7.3",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
-    "socket.io": "^2.0.4"
+    "socket.io": "^2.0.4",
+    "yeelight.js": "^1.0.1"
   },
   "devDependencies": {
     "eslint": "^4.15.0",
