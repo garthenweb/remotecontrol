@@ -7,8 +7,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "eslint lib/**/*.js spec/**/*.js",
-    "babel": "babel public/script.js --out-file public/script.compat.js",
-    "prestart": "npm run babel",
+    "prestart": "cd ./react && yarn && npm run build && rm -rf ../public && mv ./build ../public && cd ..",
     "start": "babel-node index"
   },
   "author": "Jannick Garthen",

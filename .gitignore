@@ -2,5 +2,5 @@ locals.json
 node_modules
 .sass-cache
 .vscode
-public/script.compat.js
+public
 npm-debug.log
