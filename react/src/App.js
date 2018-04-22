@@ -8,8 +8,8 @@ function App({ devices, powerOn, powerOff, powerToggle }) {
   const deviceIds = Object.keys(devices);
   return [
     <div key="group1" className="btn-group">
-      <Button onClick={() => powerOn(deviceIds)} content="Turn on" />
-      <Button onClick={() => powerOff(deviceIds)} content="Shut off" />
+      <Button theme="on" onClick={() => powerOn(deviceIds)} content="Turn on" />
+      <Button theme="off" onClick={() => powerOff(deviceIds)} content="Shut off" />
     </div>,
     ...Object.values(devices).map(device => (
       <Button
