@@ -1,38 +1,12 @@
-import { POWER_STATE_CHANGE } from '../actions/device';
-import createDevice, { POWER_OFF } from '../domain/Device';
+import { POWER_STATE_CHANGE, UPSERT } from '../actions/device';
+import createDevice from '../domain/Device';
 
-const initialState = [
-  createDevice({
-    id: '1',
-    name: 'TV',
-    state: {
-      power: POWER_OFF,
-    },
-    props: {
-      powerToggle: true,
-    },
-  }),
-  createDevice({
-    id: '2',
-    name: 'Background Light',
-    state: {
-      power: POWER_OFF,
-    },
-    props: {
-      powerToggle: true,
-    },
-  }),
-  createDevice({
-    id: '3',
-    name: 'Window Light',
-    state: {
-      power: POWER_OFF,
-    },
-    props: {
-      powerToggle: true,
-    },
-  }),
-];
+const deviceListToInitialState = devices =>
+  devices.reduce((map, device) => {
+    // eslint-disable-next-line no-param-reassign
+    map[device.id] = createDevice(device);
+    return map;
+  }, {});
 
 const reduceDevice = (device, action) => {
   const ids = [].concat(action.meta.id);
@@ -42,10 +16,28 @@ const reduceDevice = (device, action) => {
   return device;
 };
 
-export default (state = initialState, action) => {
+export default (initialDevices = []) => (
+  state = deviceListToInitialState(initialDevices),
+  action,
+) => {
   switch (action.type) {
     case POWER_STATE_CHANGE:
-      return state.map(device => reduceDevice(device, action));
+      return Object.entries(state).reduce((map, [id, device]) => {
+        // eslint-disable-next-line no-param-reassign
+        map[id] = reduceDevice(device, action);
+        return map;
+      }, {});
+
+    case UPSERT: {
+      const maybeDevice = state[action.meta.id];
+      const device = maybeDevice
+        ? maybeDevice.copy(action.payload.state, action.payload.settings)
+        : createDevice(action.payload);
+      return {
+        ...state,
+        [action.meta.id]: device,
+      };
+    }
 
     default:
       return state;

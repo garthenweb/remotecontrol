@@ -7,8 +7,9 @@ import { Provider } from 'react-redux';
 import rootReducer from './reducers';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+import sync from './middleware/sync';
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = createStore(rootReducer, applyMiddleware(thunk, sync));
 
 ReactDOM.render(
   <Provider store={store}>

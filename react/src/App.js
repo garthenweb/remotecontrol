@@ -5,13 +5,13 @@ import deviceActions from './actions/device';
 import './App.css';
 
 function App({ devices, powerOn, powerOff, powerToggle }) {
-  const deviceIds = devices.map(({ id }) => id);
+  const deviceIds = Object.keys(devices);
   return [
     <div key="group1" className="btn-group">
       <Button onClick={() => powerOn(deviceIds)} content="Turn on" />
       <Button onClick={() => powerOff(deviceIds)} content="Shut off" />
     </div>,
-    ...devices.map(device => (
+    ...Object.values(devices).map(device => (
       <Button
         key={device.id}
         onClick={() => powerToggle(device.id)}

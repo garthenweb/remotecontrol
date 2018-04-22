@@ -7,15 +7,17 @@ export default function createDevice(...args) {
   });
 }
 
+const POWER_ON_VALUE = 1;
 export const POWER_ON = Object.create({
   valueOf() {
-    return 1;
+    return POWER_ON_VALUE;
   },
 });
 
+const POWER_OFF_VALUE = 0;
 export const POWER_OFF = Object.create({
   valueOf() {
-    return 0;
+    return POWER_OFF_VALUE;
   },
 });
 
@@ -27,8 +29,18 @@ const initialState = {
   power: POWER_OFF,
 };
 
+const deserializeState = (state) => ({
+  power: (state.power !== POWER_OFF && Boolean(state.power)) ? POWER_ON : POWER_OFF,
+});
+
 class Device {
-  constructor({ id, name, props = { ...initialProps }, state = initialState }) {
+  constructor({
+    id,
+    name,
+    props = { ...initialProps },
+    state = initialState,
+    settings,
+  }) {
     Object.defineProperties(this, {
       id: {
         value: id,
@@ -43,22 +55,32 @@ class Device {
         enumerable: true,
       },
       state: {
-        value: Object.freeze(state),
+        value: Object.freeze(deserializeState(state)),
         enumerable: true,
+      },
+      settings: {
+        value: Object.freeze(settings),
+        enumerable: true,
+        configurable: true,
       },
     });
   }
 
-  copy(state) {
+  copy(state, settings = {}) {
     const nextState = typeof state === 'function' ? state(this.state) : state;
+    const nextSettings = typeof settings === 'function' ? state(this.settings) : settings;
     return createDevice({
       id: this.id,
       name: this.name,
       props: this.props,
-      state: Object.freeze({
+      state: {
         ...this.state,
         ...nextState,
-      }),
+      },
+      settings: {
+        ...this.settings,
+        ...nextSettings,
+      },
     });
   }
 
@@ -67,10 +89,13 @@ class Device {
       id: this.id,
       name: this.name,
       props: { ...this.props },
-      state: Object.keys(this.state).reduce((state, prop) => ({
-        ...state,
-        [prop]: this.getSerializedStateOf(prop),
-      }), {}),
+      state: Object.keys(this.state).reduce(
+        (state, prop) => ({
+          ...state,
+          [prop]: this.getSerializedStateOf(prop),
+        }),
+        {},
+      ),
     };
   }
 
