@@ -2,7 +2,7 @@ import apiConnector from '../connections/api';
 import actions, { POWER_STATE_CHANGE } from '../actions/device';
 
 export default store => {
-  const api = apiConnector('http://localhost:3001');
+  const api = apiConnector();
   api.addDeviceChangeListener(device => store.dispatch(actions.upsert(device)));
   return next => action => {
     switch (action.type) {
