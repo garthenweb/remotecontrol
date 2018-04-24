@@ -4,6 +4,7 @@ import fs from 'fs';
 import startServer from './lib/server';
 import createStore from './lib/server/store';
 import { setDateTime } from './lib/server/actions/date';
+import { setLocation } from './lib/server/actions/user';
 
 try {
   fs.accessSync('./locals.json', fs.constants.F_OK);

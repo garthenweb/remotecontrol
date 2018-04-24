@@ -31,7 +31,7 @@ export default (initialDevices = []) => (
     case UPSERT: {
       const maybeDevice = state[action.meta.id];
       const device = maybeDevice
-        ? maybeDevice.copy(action.payload.state, action.payload.settings)
+        ? maybeDevice.copy(action.payload.state, action.payload.settings, action.payload.groups)
         : createDevice(action.payload);
       return {
         ...state,

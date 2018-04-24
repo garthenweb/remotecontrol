@@ -40,6 +40,7 @@ class Device {
     props = { ...initialProps },
     state = initialState,
     settings,
+    groups,
   }) {
     Object.defineProperties(this, {
       id: {
@@ -63,12 +64,18 @@ class Device {
         enumerable: true,
         configurable: true,
       },
+      groups: {
+        value: Object.freeze(groups),
+        enumerable: true,
+        configurable: true,
+      },
     });
   }
 
-  copy(state, settings = {}) {
+  copy(state, settings = {}, groups) {
     const nextState = typeof state === 'function' ? state(this.state) : state;
     const nextSettings = typeof settings === 'function' ? state(this.settings) : settings;
+    const nextGroups = typeof groups === 'function' ? state(this.groups) : groups;
     return createDevice({
       id: this.id,
       name: this.name,
@@ -80,6 +87,9 @@ class Device {
       settings: {
         ...this.settings,
         ...nextSettings,
+      },
+      groups: {
+        ...(nextGroups || this.groups),
       },
     });
   }
