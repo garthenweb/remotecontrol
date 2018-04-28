@@ -7,7 +7,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "eslint lib/**/*.js spec/**/*.js",
-    "prestart": "cd ./react && yarn && npm run build && rm -rf ../public && mv ./build ../public && cd ..",
+    "prestart": "cd ./react && npm install && npm run build && rm -rf ../public && mv ./build ../public && cd ..",
     "start": "babel-node index",
     "start:server": "babel-node index"
   },
@@ -16,19 +16,19 @@
   "dependencies": {
     "babel-cli": "^6.26.0",
     "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
     "babel-preset-stage-3": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
     "express": "^4.16.2",
-    "node-fetch": "^1.7.3",
-    "redux": "^3.7.2",
+    "node-fetch": "^2.1.2",
+    "redux": "^4.0.0",
     "redux-thunk": "^2.2.0",
-    "socket.io": "^2.0.4",
+    "socket.io": "^2.1.0",
     "yeelight.js": "^1.0.1"
   },
   "devDependencies": {
-    "eslint": "^4.15.0",
+    "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
-    "eslint-plugin-import": "^2.8.0",
-    "jest": "^22.0.5"
+    "eslint-plugin-import": "^2.11.0",
+    "jest": "^22.4.3"
   }
 }
