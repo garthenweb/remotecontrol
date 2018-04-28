@@ -1,0 +1,121 @@
+{
+  "tickInterval": 1000,
+  "bdaddrs": [
+    "AA:BB:CC:DD:EE:FF"
+  ],
+  "lat": "55.5555555",
+  "lng": "9.9999999",
+  "devices": [
+    {
+      "name": "TV",
+      "groups": [],
+      "props": {
+        "power": true
+      },
+      "settings": {
+        "type": "elro_power",
+        "channel": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "code": 0
+      }
+    },
+    {
+      "name": "Background Light",
+      "groups": [
+        "light"
+      ],
+      "props": {
+        "power": true
+      },
+      "settings": {
+        "type": "elro_power",
+        "channel": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "code": 1
+      }
+    },
+    {
+      "name": "Window Light",
+      "groups": [
+        "light"
+      ],
+      "props": {
+        "power": true
+      },
+      "settings": {
+        "type": "elro_power",
+        "channel": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "code": 2
+      }
+    },
+    {
+      "name": "Sideboard Light",
+      "groups": [
+        "light"
+      ],
+      "props": {
+        "power": true
+      },
+      "settings": {
+        "type": "elro_power",
+        "channel": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "code": 3
+      }
+    },
+    {
+      "name": "Plant Light",
+      "groups": [
+        "away"
+      ],
+      "props": {
+        "power": true
+      },
+      "settings": {
+        "type": "elro_power",
+        "channel": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "code": 4
+      }
+    },
+    {
+      "name": "Light Bedroom",
+      "groups": [],
+      "props": {
+        "power": true
+      },
+      "settings": {
+        "type": "yeelight",
+        "id": "0x1234567891234567",
+        "address": "192.168.0.999",
+        "port": "55443"
+      }
+    }
+  ]
+}

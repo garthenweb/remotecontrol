@@ -7,7 +7,7 @@ Environment=PORT=8080
 Type=simple
 WorkingDirectory=/var/www/remotecontrol
 ExecStartPre=/var/www/remotecontrol/scripts/configure.sh
-ExecStart=/bin/sh -c '/home/pi/.nvm/versions/node/v8.9.4/bin/node /var/www/remotecontrol/node_modules/babel-cli/bin/babel-node.js /var/www/remotecontrol/index.js >> /var/log/node-remotecontrol.log 2>&1'
+ExecStart=/bin/sh -c '/home/pi/.nvm/versions/node/v10.0.0/bin/node /var/www/remotecontrol/node_modules/babel-cli/bin/babel-node.js /var/www/remotecontrol/index.js >> /var/log/node-remotecontrol.log 2>&1'
 Restart=on-failure
 
 [Install]
