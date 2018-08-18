@@ -16,19 +16,19 @@
   "dependencies": {
     "babel-cli": "^6.26.0",
     "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-stage-3": "^6.24.1",
-    "babel-preset-env": "^1.6.1",
     "express": "^4.16.2",
-    "node-fetch": "^2.1.2",
+    "node-fetch": "^2.2.0",
     "redux": "^4.0.0",
-    "redux-thunk": "^2.2.0",
-    "socket.io": "^2.1.0",
+    "redux-thunk": "^2.3.0",
+    "socket.io": "^2.1.1",
     "yeelight.js": "^1.0.1"
   },
   "devDependencies": {
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
-    "eslint-plugin-import": "^2.11.0",
-    "jest": "^22.4.3"
+    "eslint-plugin-import": "^2.14.0",
+    "jest": "^22.4.4"
   }
 }
