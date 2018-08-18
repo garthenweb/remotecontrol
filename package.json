@@ -11,6 +11,9 @@
     "start": "babel-node index",
     "start:server": "babel-node index"
   },
+  "engines": {
+    "node": "10.9.0"
+  },
   "author": "Jannick Garthen",
   "license": "MIT",
   "dependencies": {
