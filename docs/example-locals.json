@@ -1,7 +1,11 @@
 {
   "tickInterval": 1000,
-  "bdaddrs": [
-    "AA:BB:CC:DD:EE:FF"
+  "userDevices": [
+    {
+      "bluetoothDeviceIdentifier": "AA:BB:CC:DD:EE:FF",
+      "macAddress": "AA:BB:CC:DD:EE:FF",
+      "deviceName": "Any Name just for documentation, not used!!"
+    }
   ],
   "lat": "55.5555555",
   "lng": "9.9999999",
