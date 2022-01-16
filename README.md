@@ -63,7 +63,7 @@ Flash the [Raspbian strech lite rom](https://www.raspberrypi.org/downloads/raspb
 Create a JSON file within the root of the project called `locals.json` with the following properties.
 
 - `tickInterval`: recommended value `1000`
-- `bdaddrs`: array of bluetooth devices (use multiple devices with caution, this was never tested)
+- `userDevices`: array of user devices, identified by bluetooth and mac address
 - `lat`: Latitude of your location (for weather details)
 - `lng`: Longitude of your location (for weather details)
 - `devices`: List of devices to control
