@@ -120,6 +120,21 @@
         "address": "192.168.0.999",
         "port": "55443"
       }
+    },
+    {
+      "name": "Light Bedroom 2",
+      "groups": [],
+      "props": {
+        "power": true
+      },
+      "settings": {
+        "type": "tuya_power",
+        "id": "xxxxxxxxxxxxxxxxxxxx", // required
+        "key": "xxxxxxxxxxxxxxxx", // required
+        "ip": "192.168.0.999",  // required
+        "version": "3.3", // optional
+        "issueRefreshOnConnect": true // optional
+      }
     }
   ]
 }

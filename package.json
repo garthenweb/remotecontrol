@@ -27,6 +27,7 @@
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
     "socket.io": "^2.1.1",
+    "tuyapi": "github:codetheweb/tuyapi",
     "yeelight.js": "^1.0.1"
   },
   "devDependencies": {

@@ -77,6 +77,7 @@ Please see the [example](docs/example-locals.json) for more information.
   - discover devices
   - activate lan mode
 - elro_power
+- tuya_power
 
 ## Groups (TBD)
 
