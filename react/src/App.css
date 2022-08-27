@@ -4,7 +4,7 @@ Background: #7dc2ad
 Red: #e27d5f
 Blue: #85cdca
 Orange: #e8a87c
-Pink: #c38d9d
+Pink: #c38d9d rgb(195, 141, 157)
 Green: #40b3a2
 
 */
@@ -70,8 +70,10 @@ button {
 }
 
 .btn-primary {
+  padding: 12px 8px 8px;
   width: auto;
-  padding: 16px;
+  font-size: 25px;
+  box-shadow: 0 0 10px rgb(0 0 0 / 15%);
 }
 
 .btn.is-active {
@@ -85,7 +87,7 @@ button {
 }
 
 .btn.btn-off {
-  background: #e27d5f;
+  background: #ebbbbb;
   color: #fdfdfd;
 }
 
