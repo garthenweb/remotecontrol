@@ -28,14 +28,15 @@ function App({ devices, powerOn, powerOff, powerToggle }) {
 
   return [
     <div key="group1" className="btn-group">
-      <Button theme="on" onClick={onButtonOnClick} content="Turn on" />
-      <Button theme="off" onClick={onButtonOffClick} content="Shut off" />
+      <Button theme="on" primary onClick={onButtonOnClick} content="🔌" />
+      <Button theme="off" primary onClick={onButtonOffClick} content="❌" />
     </div>,
     ...Object.values(devices).map(device => (
       <Button
         key={device.id}
         onClick={onDeviceClick(device.id)}
         content={device.name}
+        meta={device.room}
         isActive={device.getSerializedStateOf('power', Boolean)}
       />
     )),

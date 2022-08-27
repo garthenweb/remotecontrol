@@ -29,8 +29,9 @@ const initialState = {
   power: POWER_OFF,
 };
 
-const deserializeState = (state) => ({
-  power: (state.power !== POWER_OFF && Boolean(state.power)) ? POWER_ON : POWER_OFF,
+const deserializeState = state => ({
+  power:
+    state.power !== POWER_OFF && Boolean(state.power) ? POWER_ON : POWER_OFF,
 });
 
 class Device {
@@ -41,6 +42,7 @@ class Device {
     state = initialState,
     settings,
     groups,
+    room,
   }) {
     Object.defineProperties(this, {
       id: {
@@ -69,13 +71,21 @@ class Device {
         enumerable: true,
         configurable: true,
       },
+      room: {
+        value: Object.freeze(room),
+        enumerable: true,
+        configurable: true,
+      },
     });
   }
 
-  copy(state, settings = {}, groups) {
+  copy(state, settings = {}, groups, room) {
     const nextState = typeof state === 'function' ? state(this.state) : state;
-    const nextSettings = typeof settings === 'function' ? state(this.settings) : settings;
-    const nextGroups = typeof groups === 'function' ? state(this.groups) : groups;
+    const nextSettings =
+      typeof settings === 'function' ? state(this.settings) : settings;
+    const nextGroups =
+      typeof groups === 'function' ? state(this.groups) : groups;
+    const nextRoom = typeof room === 'function' ? state(this.room) : room;
     return createDevice({
       id: this.id,
       name: this.name,
@@ -88,9 +98,8 @@ class Device {
         ...this.settings,
         ...nextSettings,
       },
-      groups: {
-        ...(nextGroups || this.groups),
-      },
+      groups: [...(nextGroups || this.groups)],
+      room: nextRoom || this.room,
     });
   }
 
@@ -106,6 +115,8 @@ class Device {
         }),
         {},
       ),
+      groups: [...this.groups],
+      room: this.room,
     };
   }
 

@@ -1,3 +1,14 @@
+/** Color Plate
+
+Background: #7dc2ad
+Red: #e27d5f
+Blue: #85cdca
+Orange: #e8a87c
+Pink: #c38d9d
+Green: #40b3a2
+
+*/
+
 * {
   padding: 0;
   margin: 0;
@@ -7,8 +18,7 @@
 html {
   font-family: 'Josefin Sans', sans-serif;
   font-weight: normal;
-  background: radial-gradient(circle farthest-corner at 0 0, #66628c, #33304c);
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  background: #7dc2ad;
   max-height: 100%;
   text-align: center;
   min-height: 100%;
@@ -17,6 +27,10 @@ html {
 body {
   animation: fade-in 1.5s 0.5s both;
   font-size: 0;
+}
+
+main {
+  margin: 50px 10px;
 }
 
 button {
@@ -29,15 +43,22 @@ button {
 
 .btn {
   background: #fff;
-  color: #333;
-  padding: 25px 15px;
-  border-radius: 0.16667rem;
+  color: #386250;
+  padding: 18px 10px 9px;
+  border-radius: 100px;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 15px;
   margin: 2.5%;
   transition: background 0.3s, transform 50ms;
   width: 45%;
   display: inline-block;
+  line-height: 1.2em;
+}
+
+.btn-meta {
+  color: #c38d9d;
+  font-size: 10px;
+  display: block;
 }
 
 .btn-full {
@@ -48,18 +69,23 @@ button {
   width: 28.333%;
 }
 
+.btn-primary {
+  width: auto;
+  padding: 16px;
+}
+
 .btn.is-active {
-  background: #ffe86f;
+  background: #ffe389;
   /*color: #fdfdfd;*/
 }
 
 .btn.btn-on {
-  background: #1bd032;
+  background: #85cdca;
   color: #fdfdfd;
 }
 
 .btn.btn-off {
-  background: #a6250f;
+  background: #e27d5f;
   color: #fdfdfd;
 }
 
@@ -69,6 +95,11 @@ button {
 
 .btn-group {
   margin-bottom: 25px;
+  text-align: right;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 @keyframes fade-in {

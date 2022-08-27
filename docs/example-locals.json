@@ -26,7 +26,8 @@
           1
         ],
         "code": 0
-      }
+      },
+      "room": "Livingroom"
     },
     {
       "name": "Background Light",
@@ -46,7 +47,8 @@
           1
         ],
         "code": 1
-      }
+      },
+      "room": "Livingroom"
     },
     {
       "name": "Window Light",
@@ -66,7 +68,8 @@
           1
         ],
         "code": 2
-      }
+      },
+      "room": "Corridor"
     },
     {
       "name": "Sideboard Light",
@@ -86,7 +89,8 @@
           1
         ],
         "code": 3
-      }
+      },
+      "room": "Corridor"
     },
     {
       "name": "Plant Light",
@@ -106,7 +110,8 @@
           1
         ],
         "code": 4
-      }
+      },
+      "room": "Corridor"
     },
     {
       "name": "Light Bedroom",
@@ -119,7 +124,8 @@
         "id": "0x1234567891234567",
         "address": "192.168.0.999",
         "port": "55443"
-      }
+      },
+      "room": "Bedroom"
     },
     {
       "name": "Light Bedroom 2",
@@ -134,7 +140,8 @@
         "ip": "192.168.0.999",  // required
         "version": "3.3", // optional
         "issueRefreshOnConnect": true // optional
-      }
+      },
+      "room": "Bedroom"
     }
   ]
 }
