@@ -1,11 +1,10 @@
 {
   "presets": [
-    ["env", {
+    ["@babel/preset-env", {
       "targets": {
         "node": "current",
         "browsers": ["safari >= 9"]
       }
-    }],
-    "stage-3"
+    }]
   ]
 }
