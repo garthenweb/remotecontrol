@@ -20,7 +20,7 @@
     "@babel/core": "^7.18.13",
     "@babel/node": "^7.18.10",
     "@babel/preset-env": "^7.18.10",
-    "express": "^4.16.2",
+    "express": "^4.17.3",
     "local-devices": "^3.2.0",
     "node-fetch": "^2.2.0",
     "redux": "^4.0.0",
